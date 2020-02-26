@@ -2,13 +2,20 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 const TrackCreateScreen = () => {
-  return (
-    <View>
-      <Text></Text>
-    </View>
-  );
+    return (
+        <View style={styles.container}>
+            <Text>TrackCreateScreen</Text>
+        </View>
+    );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+});
 
 export default TrackCreateScreen;

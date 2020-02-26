@@ -1,14 +1,29 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
+import { StackActions } from "@react-navigation/native";
 
-const SigninScreen = () => {
-  return (
-    <View>
-      <Text></Text>
-    </View>
-  );
+const SigninScreen = ({ navigation }) => {
+    return (
+        <View style={styles.container}>
+            <Text>Sign In</Text>
+            <Button
+                title="Sign Up"
+                // onPress={() => navigation.dispatch(StackActions.replace("Signup"))}
+                onPress={() => navigation.replace("Signup")}
+                // onPress={() => navigation.navigate("Signup")}
+            />
+            <Button title="Home" onPress={() => navigation.replace("Home")} />
+        </View>
+    );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        // backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+});
 
 export default SigninScreen;

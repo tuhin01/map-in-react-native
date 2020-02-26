@@ -1,14 +1,27 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 
-const TrackListScreen = () => {
-  return (
-    <View>
-      <Text></Text>
-    </View>
-  );
+const TrackListScreen = ({ navigation }) => {
+    return (
+        <View style={styles.container}>
+            <Text>Track List</Text>
+            <Button
+                title="Track Detail"
+                onPress={() => {
+                    return navigation.navigate("Trackdetail");
+                }}
+            />
+        </View>
+    );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        // backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+});
 
 export default TrackListScreen;
