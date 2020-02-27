@@ -1,14 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Button, StyleSheet, View } from "react-native";
 import AuthForm from "../components/AuthForm";
 import { Context as AuthContext } from "../context/AuthContext";
 
 const SigninScreen = ({ navigation }) => {
-    const { state, signin } = useContext(AuthContext);
+    const { state, signin, autoSignIn, clearErrorMessage } = useContext(AuthContext);
 
     const onSubmit = ({ email, password }) => {
         signin({ email, password });
     };
+
+    useEffect(() => {
+        const listener = navigation.addListener("focus", () => {
+            clearErrorMessage();
+        });
+
+        return listener;
+    }, []);
 
     return (
         <View style={styles.container}>

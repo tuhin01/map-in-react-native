@@ -1,4 +1,4 @@
-import { StackActions } from "@react-navigation/native";
+import { CommonActions, StackActions } from "@react-navigation/native";
 
 let navigator;
 
@@ -7,5 +7,14 @@ export const setNavigator = nav => {
 };
 
 export const navigate = (routeName, params) => {
-    navigator.dispatch(StackActions.replace(routeName, params));
+    console.log(routeName);
+    if (routeName === "Signin") {
+        navigator.dispatch(StackActions.replace(routeName));
+    } else {
+        navigator.dispatch(
+            CommonActions.reset({
+                routes: [{ name: routeName, params }],
+            })
+        );
+    }
 };

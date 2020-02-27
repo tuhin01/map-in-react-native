@@ -13,6 +13,7 @@ import TrackDetailScreen from "./src/screens/TrackDetailScreen";
 import TrackCreateScreen from "./src/screens/TrackCreateScreen";
 import { Provider as AuthProvider } from "./src/context/AuthContext";
 import { setNavigator } from "./src/nagigationRef";
+import HomeScreen from "./src/screens/HomeScreen";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -33,7 +34,7 @@ class App extends React.Component {
                     name="Tracklist"
                     component={TrackListScreen}
                     options={{
-                        tabBarLabel: "Home",
+                        tabBarLabel: "Dashboard",
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons name="home" color={color} size={size} />
                         ),
@@ -78,7 +79,13 @@ class App extends React.Component {
                                 fontWeight: "bold",
                             },
                         }}
+                        initialRouteName="Home"
                     >
+                        <Stack.Screen
+                            name="Home"
+                            component={HomeScreen}
+                            options={{ headerShown: false }}
+                        />
                         <Stack.Screen
                             name="Signin"
                             component={SigninScreen}
@@ -89,7 +96,7 @@ class App extends React.Component {
                             component={SignupScreen}
                             options={{ headerShown: false }}
                         />
-                        <Stack.Screen name="Home" component={this.DrawerNavigator} />
+                        <Stack.Screen name="Dashboard" component={this.DrawerNavigator} />
                         <Stack.Screen name="Trackdetail" component={TrackDetailScreen} />
                         <Stack.Screen name="TopTab" children={this.TopTabNavigator} />
                     </Stack.Navigator>
