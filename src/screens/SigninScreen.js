@@ -9,7 +9,7 @@ const SigninScreen = ({ navigation }) => {
             <Button
                 title="Sign Up"
                 // onPress={() => navigation.dispatch(StackActions.replace("Signup"))}
-                onPress={() => navigation.replace("Signup")}
+                onPress={() => navigation.push("Signup")}
                 // onPress={() => navigation.navigate("Signup")}
             />
             <Button title="Home" onPress={() => navigation.replace("Home")} />
