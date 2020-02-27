@@ -6,12 +6,12 @@ import SigninScreen from "./src/screens/SigninScreen";
 import SignupScreen from "./src/screens/SignupScreen";
 import AccountScreen from "./src/screens/AccountScreen";
 import TrackListScreen from "./src/screens/TrackListScreen";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import TrackDetailScreen from "./src/screens/TrackDetailScreen";
 import TrackCreateScreen from "./src/screens/TrackCreateScreen";
+import { Provider as AuthProvider } from "./src/context/AuthContext";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -65,33 +65,35 @@ class App extends React.Component {
 
     render() {
         return (
-            <NavigationContainer>
-                <Stack.Navigator
-                    screenOptions={{
-                        headerStyle: {
-                            backgroundColor: "#f4511e",
-                        },
-                        headerTintColor: "#fff",
-                        headerTitleStyle: {
-                            fontWeight: "bold",
-                        },
-                    }}
-                >
-                    <Stack.Screen
-                        name="Signin"
-                        component={SigninScreen}
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="Signup"
-                        component={SignupScreen}
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen name="Home" component={this.DrawerNavigator} />
-                    <Stack.Screen name="Trackdetail" component={TrackDetailScreen} />
-                    <Stack.Screen name="TopTab" children={this.TopTabNavigator} />
-                </Stack.Navigator>
-            </NavigationContainer>
+            <AuthProvider>
+                <NavigationContainer>
+                    <Stack.Navigator
+                        screenOptions={{
+                            headerStyle: {
+                                backgroundColor: "#f4511e",
+                            },
+                            headerTintColor: "#fff",
+                            headerTitleStyle: {
+                                fontWeight: "bold",
+                            },
+                        }}
+                    >
+                        <Stack.Screen
+                            name="Signin"
+                            component={SigninScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="Signup"
+                            component={SignupScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen name="Home" component={this.DrawerNavigator} />
+                        <Stack.Screen name="Trackdetail" component={TrackDetailScreen} />
+                        <Stack.Screen name="TopTab" children={this.TopTabNavigator} />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </AuthProvider>
         );
     }
 }
