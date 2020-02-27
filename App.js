@@ -12,6 +12,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import TrackDetailScreen from "./src/screens/TrackDetailScreen";
 import TrackCreateScreen from "./src/screens/TrackCreateScreen";
 import { Provider as AuthProvider } from "./src/context/AuthContext";
+import { setNavigator } from "./src/nagigationRef";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -66,7 +67,7 @@ class App extends React.Component {
     render() {
         return (
             <AuthProvider>
-                <NavigationContainer>
+                <NavigationContainer ref={navigator => setNavigator(navigator)}>
                     <Stack.Navigator
                         screenOptions={{
                             headerStyle: {

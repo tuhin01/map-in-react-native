@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { View, StyleSheet, SafeAreaView } from "react-native";
-import { Text, Button, Input } from "react-native-elements";
+import React, {useContext, useState} from "react";
+import {SafeAreaView, StyleSheet} from "react-native";
+import {Button, Input, Text} from "react-native-elements";
 import Spacer from "../components/Spacer";
+import {Context as AuthContext} from "../context/AuthContext";
 
-const SignupScreen = ({ navigation }) => {
+const SignupScreen = ({navigation}) => {
+    const {state, signup} = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -29,8 +31,19 @@ const SignupScreen = ({ navigation }) => {
                 autoCorrect={false}
             />
             <Spacer>
-                <Button title="Sign Up" onPress={() => navigation.pop()} />
+                <Button title="Sign Up" onPress={() => signup({email, password})}/>
             </Spacer>
+            {state.errorMessage ? (
+                <Spacer>
+                    <Text>{state.errorMessage}</Text>
+                </Spacer>
+            ) : null}
+
+            <Button
+                type="clear"
+                title="Already have an account? Sign in instead."
+                onPress={() => navigation.pop()}
+            />
         </SafeAreaView>
     );
 };
