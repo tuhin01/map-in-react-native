@@ -1,7 +1,9 @@
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 
 const TrackListScreen = ({ navigation }) => {
+    navigation.setOptions({ headerLeft: null });
+
     return (
         <View style={styles.container}>
             <Text>Track List</Text>

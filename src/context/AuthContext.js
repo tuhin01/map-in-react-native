@@ -5,7 +5,7 @@ import { navigate } from "../nagigationRef";
 
 const authReducer = (state, action) => {
     switch (action.type) {
-        case "signup":
+        case "signin":
             return { errorMessage: "", token: action.payload };
         case "error":
             return { ...state, errorMessage: action.payload };
@@ -19,7 +19,7 @@ const signup = dispatch => {
         try {
             const response = await httpService.post("/signup", { email, password });
             await AsyncStorage.setItem("token", response.data.token);
-            dispatch({ action: "signup", payload: response.data.token });
+            dispatch({ action: "signin", payload: response.data.token });
             navigate("Home");
         } catch (e) {
             dispatch({ type: "error", payload: e.message });
@@ -28,8 +28,15 @@ const signup = dispatch => {
 };
 
 const signin = dispatch => {
-    return (email, password) => {
-        // Make API call to server with email, password
+    return async ({ email, password }) => {
+        try {
+            const response = await httpService.post("/signin", { email, password });
+            await AsyncStorage.setItem("token", response.data.token);
+            dispatch({ action: "signin", payload: response.data.token });
+            navigate("Home");
+        } catch (e) {
+            dispatch({ type: "error", payload: e.message });
+        }
     };
 };
 

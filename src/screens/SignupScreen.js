@@ -1,44 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
-import { Button, Input, Text } from "react-native-elements";
-import Spacer from "../components/Spacer";
+import { Button } from "react-native-elements";
+import AuthForm from "../components/AuthForm";
 import { Context as AuthContext } from "../context/AuthContext";
 
 const SignupScreen = ({ navigation }) => {
     const { state, signup } = useContext(AuthContext);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+
+    const onSubmit = ({ email, password }) => {
+        signup({ email, password });
+    };
 
     return (
         <SafeAreaView style={styles.container}>
-            <Spacer>
-                <Text h3>Sign Up for Tracker</Text>
-            </Spacer>
-            <Input
-                label="Email"
-                value={email}
-                onChangeText={setEmail}
-                autoCapitalize="none"
-                autoCorrect={false}
+            <AuthForm
+                headerText="Sign Up for Trackers"
+                errorMessage={state.errorMessage}
+                submitButtonText="Sign Up"
+                onSubmit={onSubmit}
             />
-            <Spacer />
-            <Input
-                secureTextEntry
-                label="Password"
-                value={password}
-                onChangeText={setPassword}
-                autoCapitalize="none"
-                autoCorrect={false}
-            />
-            <Spacer>
-                <Button title="Sign Up" onPress={() => signup({ email, password })} />
-            </Spacer>
-            {state.errorMessage ? (
-                <Spacer>
-                    <Text>{state.errorMessage}</Text>
-                </Spacer>
-            ) : null}
-
             <Button
                 type="clear"
                 title="Already have an account? Sign in instead."
