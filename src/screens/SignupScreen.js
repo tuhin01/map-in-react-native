@@ -1,14 +1,14 @@
-import React, {useContext, useEffect} from "react";
-import {SafeAreaView, StyleSheet} from "react-native";
-import {Button} from "react-native-elements";
+import React, { useContext, useEffect } from "react";
+import { SafeAreaView, StyleSheet } from "react-native";
+import { Button } from "react-native-elements";
 import AuthForm from "../components/AuthForm";
-import {Context as AuthContext} from "../context/AuthContext";
+import { Context as AuthContext } from "../context/AuthContext";
 
-const SignupScreen = ({navigation}) => {
-    const {state, signup, clearErrorMessage} = useContext(AuthContext);
+const SignupScreen = ({ navigation }) => {
+    const { state, signup, clearErrorMessage } = useContext(AuthContext);
 
-    const onSubmit = ({email, password}) => {
-        signup({email, password});
+    const onSubmit = ({ email, password }) => {
+        signup({ email, password });
     };
 
     useEffect(() => {
