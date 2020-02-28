@@ -1,15 +1,18 @@
-import React, { useContext, useEffect } from "react";
-import { StyleSheet, View } from "react-native";
-import { Button } from "react-native-elements";
-import { Context as AuthContext } from "../context/AuthContext";
+import React, {useContext, useEffect} from "react";
+import {StyleSheet, View} from "react-native";
+import {Button} from "react-native-elements";
+import {Context as AuthContext} from "../context/AuthContext";
 
 // This component is purely used as a middleaware between login & logout state
 const HomeScreen = () => {
-    const { autoSignIn } = useContext(AuthContext);
+    const {autoSignIn} = useContext(AuthContext);
 
     useEffect(() => {
         setTimeout(() => {
-            autoSignIn();
+            autoSignIn(() => {
+                // Load any required data before going to dashboard
+                console.log("fetching data...");
+            });
         }, 2000);
     }, []);
 
