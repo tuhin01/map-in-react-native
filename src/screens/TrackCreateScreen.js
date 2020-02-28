@@ -8,9 +8,8 @@ import useLocation from "../hooks/useLocation";
 
 const TrackCreateScreen = () => {
     const { addLocation } = useContext(LocationContext);
-    const [error] = useLocation(location => addLocation(location));
     const isFocused = useIsFocused();
-    console.log(isFocused);
+    const [error] = useLocation(isFocused, location => addLocation(location));
 
     return (
         <SafeAreaView>
