@@ -1,13 +1,13 @@
 // import "../_mockLocation";
-import React, {useContext, useEffect, useState} from "react";
-import {SafeAreaView, StyleSheet} from "react-native";
-import {Text} from "react-native-elements";
-import {Accuracy, requestPermissionsAsync, watchPositionAsync} from "expo-location";
+import React, { useContext, useEffect, useState } from "react";
+import { SafeAreaView, StyleSheet } from "react-native";
+import { Text } from "react-native-elements";
+import { Accuracy, requestPermissionsAsync, watchPositionAsync } from "expo-location";
 import Map from "../components/Map";
-import {Context as LocationContext} from "../context/LocationContext";
+import { Context as LocationContext } from "../context/LocationContext";
 
 const TrackCreateScreen = () => {
-    const {addLocation} = useContext(LocationContext);
+    const { addLocation } = useContext(LocationContext);
     const [error, setError] = useState(null);
 
     const startTracking = async () => {
@@ -54,7 +54,7 @@ const TrackCreateScreen = () => {
     return (
         <SafeAreaView>
             <Text h3>Create a Map</Text>
-            <Map/>
+            <Map />
             {error ? <Text>Please enable location service</Text> : null}
         </SafeAreaView>
     );

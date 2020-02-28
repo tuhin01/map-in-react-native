@@ -1,15 +1,15 @@
-import React, {useContext} from "react";
-import {ActivityIndicator, StyleSheet} from "react-native";
-import MapView, {Circle} from "react-native-maps";
-import {Context as LocationContext} from "../context/LocationContext";
+import React, { useContext } from "react";
+import { ActivityIndicator, StyleSheet } from "react-native";
+import MapView, { Circle } from "react-native-maps";
+import { Context as LocationContext } from "../context/LocationContext";
 
 const Map = () => {
     const {
-        state: {currentLocation},
+        state: { currentLocation },
     } = useContext(LocationContext);
 
     if (!currentLocation) {
-        return <ActivityIndicator size="large" style={{marginTop: 200}}/>;
+        return <ActivityIndicator size="large" style={{ marginTop: 200 }} />;
     }
 
     const zoomLavel = 0.01;

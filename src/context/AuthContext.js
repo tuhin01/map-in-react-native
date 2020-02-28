@@ -1,16 +1,16 @@
 import createDataContext from "./createDataContext";
 import httpService from "../services/HttpService";
-import {AsyncStorage} from "react-native";
-import {navigate} from "../nagigationRef";
+import { AsyncStorage } from "react-native";
+import { navigate } from "../nagigationRef";
 
 const authReducer = (state, action) => {
     switch (action.type) {
         case "signin":
-            return {errorMessage: "", token: action.payload};
+            return { errorMessage: "", token: action.payload };
         case "signout":
-            return {errorMessage: "", token: ""};
+            return { errorMessage: "", token: "" };
         case "error":
-            return {...state, errorMessage: action.payload};
+            return { ...state, errorMessage: action.payload };
         case "clear_error_message":
             return { ...state, errorMessage: "" };
         default:
@@ -47,7 +47,7 @@ const signin = dispatch => {
 const autoSignIn = dispatch => async callback => {
     const token = await AsyncStorage.getItem("token");
     if (token) {
-        dispatch({type: "signin", payload: token});
+        dispatch({ type: "signin", payload: token });
         callback();
         navigate("Dashboard");
     } else {
