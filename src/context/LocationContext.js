@@ -4,6 +4,14 @@ const locationReducer = (state, action) => {
     switch (action.type) {
         case "add_current_location":
             return { ...state, currentLocation: action.payload };
+        case "start_recording":
+            return { ...state, recording: true };
+        case "stop_recording":
+            return { ...state, recording: false };
+        case "save_location":
+            return { ...state, locations: [...state.locations, action.payload] };
+        case "track_name":
+            return { ...state, trackName: action.payload };
         default:
             return { state };
     }
@@ -11,25 +19,33 @@ const locationReducer = (state, action) => {
 
 const startRecording = dispatch => {
     return () => {
-        // dfdf
+        dispatch({ type: "start_recording" });
     };
 };
 
 const stopRecording = dispatch => {
     return () => {
-        // dfdf
+        dispatch({ type: "stop_recording" });
     };
 };
 
 const addLocation = dispatch => {
-    return location => {
-        console.log("Hi there");
+    return (location, recording) => {
         dispatch({ type: "add_current_location", payload: location });
+        if (recording) {
+            dispatch({ type: "save_location", payload: location });
+        }
+    };
+};
+
+const trackName = dispatch => {
+    return name => {
+        dispatch({ type: "track_name", payload: name });
     };
 };
 
 export const { Context, Provider } = createDataContext(
     locationReducer,
-    { startRecording, stopRecording, addLocation },
-    { recording: false, locatios: [], currentLocation: null }
+    { startRecording, stopRecording, addLocation, trackName },
+    { trackName: "", recording: false, locations: [], currentLocation: null }
 );
