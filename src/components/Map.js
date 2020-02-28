@@ -22,11 +22,11 @@ const Map = () => {
                 latitudeDelta: zoomLavel,
                 longitudeDelta: zoomLavel,
             }}
-            region={{
-                ...currentLocation.coords,
-                latitudeDelta: zoomLavel,
-                longitudeDelta: zoomLavel,
-            }}
+            // region={{
+            //     ...currentLocation.coords,
+            //     latitudeDelta: zoomLavel,
+            //     longitudeDelta: zoomLavel,
+            // }}
         >
             <Circle
                 center={currentLocation.coords}
