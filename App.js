@@ -13,6 +13,7 @@ import TrackDetailScreen from "./src/screens/TrackDetailScreen";
 import TrackCreateScreen from "./src/screens/TrackCreateScreen";
 import { Provider as AuthProvider } from "./src/context/AuthContext";
 import { Provider as LocationProvider } from "./src/context/LocationContext";
+import { Provider as TrackProvider } from "./src/context/TrackContext";
 import { setNavigator } from "./src/nagigationRef";
 import HomeScreen from "./src/screens/HomeScreen";
 
@@ -68,43 +69,45 @@ class App extends React.Component {
 
     render() {
         return (
-            <LocationProvider>
-                <AuthProvider>
-                    <NavigationContainer ref={navigator => setNavigator(navigator)}>
-                        <Stack.Navigator
-                            screenOptions={{
-                                headerStyle: {
-                                    backgroundColor: "#f4511e",
-                                },
-                                headerTintColor: "#fff",
-                                headerTitleStyle: {
-                                    fontWeight: "bold",
-                                },
-                            }}
-                            initialRouteName="Home"
-                        >
-                            <Stack.Screen
-                                name="Home"
-                                component={HomeScreen}
-                                options={{ headerShown: false }}
-                            />
-                            <Stack.Screen
-                                name="Signin"
-                                component={SigninScreen}
-                                options={{ headerShown: false }}
-                            />
-                            <Stack.Screen
-                                name="Signup"
-                                component={SignupScreen}
-                                options={{ headerShown: false }}
-                            />
-                            <Stack.Screen name="Dashboard" component={this.DrawerNavigator} />
-                            <Stack.Screen name="Trackdetail" component={TrackDetailScreen} />
-                            <Stack.Screen name="TopTab" children={this.TopTabNavigator} />
-                        </Stack.Navigator>
-                    </NavigationContainer>
-                </AuthProvider>
-            </LocationProvider>
+            <AuthProvider>
+                <TrackProvider>
+                    <LocationProvider>
+                        <NavigationContainer ref={navigator => setNavigator(navigator)}>
+                            <Stack.Navigator
+                                screenOptions={{
+                                    headerStyle: {
+                                        backgroundColor: "#f4511e",
+                                    },
+                                    headerTintColor: "#fff",
+                                    headerTitleStyle: {
+                                        fontWeight: "bold",
+                                    },
+                                }}
+                                initialRouteName="Home"
+                            >
+                                <Stack.Screen
+                                    name="Home"
+                                    component={HomeScreen}
+                                    options={{ headerShown: false }}
+                                />
+                                <Stack.Screen
+                                    name="Signin"
+                                    component={SigninScreen}
+                                    options={{ headerShown: false }}
+                                />
+                                <Stack.Screen
+                                    name="Signup"
+                                    component={SignupScreen}
+                                    options={{ headerShown: false }}
+                                />
+                                <Stack.Screen name="Dashboard" component={this.DrawerNavigator} />
+                                <Stack.Screen name="Trackdetail" component={TrackDetailScreen} />
+                                <Stack.Screen name="TopTab" children={this.TopTabNavigator} />
+                            </Stack.Navigator>
+                        </NavigationContainer>
+                    </LocationProvider>
+                </TrackProvider>
+            </AuthProvider>
         );
     }
 }
