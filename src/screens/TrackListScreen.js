@@ -7,6 +7,7 @@ import Spacer from "../components/Spacer";
 
 const TrackListScreen = ({ navigation }) => {
     navigation.setOptions({ headerLeft: null });
+
     const isFocused = useIsFocused();
     const { state, getTracks } = useContext(TrackContext);
 
@@ -18,17 +19,16 @@ const TrackListScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Spacer>
-                <Text style={{ alignSelf: "center" }} h3>
-                    Track List
-                </Text>
-            </Spacer>
             <FlatList
                 data={state}
                 keyExtractor={item => item._id}
                 renderItem={({ item }) => {
                     return (
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => {
+                                return navigation.navigate("Trackdetail", { track: item });
+                            }}
+                        >
                             <ListItem chevron title={item.name} />
                         </TouchableOpacity>
                     );

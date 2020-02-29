@@ -1,5 +1,5 @@
 import React from "react";
-import { MaterialCommunityIcons } from "react-native-vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import SigninScreen from "./src/screens/SigninScreen";
@@ -27,23 +27,41 @@ class App extends React.Component {
         return (
             <MaterialBottomTabs.Navigator
                 initialRouteName="Tracklist"
-                activeColor="#f0edf6"
-                inactiveColor="#3e2465"
-                labelStyle={{ fontSize: 14 }}
-                barStyle={{ backgroundColor: "tomato" }}
+                // activeColor="#f0edf6"
+                // inactiveColor="#3e2465"
+                // labelStyle={{ fontSize: 14 }}
+                // barStyle={{ backgroundColor: "tomato" }}
             >
                 <MaterialTopTabs.Screen
                     name="Tracklist"
                     component={TrackListScreen}
                     options={{
-                        tabBarLabel: "Dashboard",
+                        tabBarLabel: "Tracks",
                         tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="home" color={color} size={size} />
+                            <FontAwesome name="th-list" color={color} size={20} />
                         ),
                     }}
                 />
-                <MaterialTopTabs.Screen name="Trackcreate" component={TrackCreateScreen} />
-                <MaterialTopTabs.Screen name="Account" component={AccountScreen} />
+                <MaterialTopTabs.Screen
+                    name="Trackcreate"
+                    component={TrackCreateScreen}
+                    options={{
+                        tabBarLabel: "Add Track",
+                        tabBarIcon: ({ color, size }) => (
+                            <FontAwesome name="plus" color={color} size={20} />
+                        ),
+                    }}
+                />
+                <MaterialTopTabs.Screen
+                    name="Account"
+                    component={AccountScreen}
+                    options={{
+                        tabBarLabel: "Settings",
+                        tabBarIcon: ({ color, size }) => (
+                            <FontAwesome name="gear" color={color} size={20} />
+                        ),
+                    }}
+                />
             </MaterialBottomTabs.Navigator>
         );
     };
@@ -76,7 +94,7 @@ class App extends React.Component {
                             <Stack.Navigator
                                 screenOptions={{
                                     headerStyle: {
-                                        backgroundColor: "#f4511e",
+                                        backgroundColor: "#3865ff",
                                     },
                                     headerTintColor: "#fff",
                                     headerTitleStyle: {
@@ -100,7 +118,11 @@ class App extends React.Component {
                                     component={SignupScreen}
                                     options={{ headerShown: false }}
                                 />
-                                <Stack.Screen name="Dashboard" component={this.DrawerNavigator} />
+                                <Stack.Screen
+                                    name="Dashboard"
+                                    options={{ headerTitle: "Tracks" }}
+                                    component={this.DrawerNavigator}
+                                />
                                 <Stack.Screen name="Trackdetail" component={TrackDetailScreen} />
                                 <Stack.Screen name="TopTab" children={this.TopTabNavigator} />
                             </Stack.Navigator>
