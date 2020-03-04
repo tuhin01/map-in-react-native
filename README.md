@@ -2,8 +2,8 @@
 
 ### Screenshots - 
 
-![Signin](https://i.ibb.co/zVc36MJ/signin.png)
-![Track List](https://i.ibb.co/bB00BWw/list.png)
-![Track Detail](https://i.ibb.co/pLCwM68/detail.png)
-![Track Create](https://i.ibb.co/KskZfrj/create.png)
-![Logout](https://i.ibb.co/yh96rvD/logout.png)
+![Signin](https://i.ibb.co/Lxxd0GK/signin.png)
+![Track List](https://i.ibb.co/FYtwfY6/list.png)
+![Track Detail](https://i.ibb.co/5j5zVf7/detail.png)
+![Track Create](https://i.ibb.co/X3ZNF5G/create.png)
+![Logout](https://i.ibb.co/rdX01wH/logout.png)
