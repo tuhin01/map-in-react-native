@@ -16,6 +16,7 @@ import { Provider as LocationProvider } from "./src/context/LocationContext";
 import { Provider as TrackProvider } from "./src/context/TrackContext";
 import { setNavigator } from "./src/nagigationRef";
 import HomeScreen from "./src/screens/HomeScreen";
+import { StatusBar } from "react-native";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -86,6 +87,8 @@ class App extends React.Component {
     };
 
     render() {
+        StatusBar.setBarStyle("light-content", true);
+
         return (
             <AuthProvider>
                 <TrackProvider>
