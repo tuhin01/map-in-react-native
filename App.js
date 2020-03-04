@@ -48,6 +48,7 @@ class App extends React.Component {
                     component={TrackCreateScreen}
                     options={{
                         tabBarLabel: "Add Track",
+                        title: "Add a Track",
                         tabBarIcon: ({ color, size }) => (
                             <FontAwesome name="plus" color={color} size={20} />
                         ),

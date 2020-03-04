@@ -40,8 +40,14 @@ const Map = () => {
 };
 
 const styles = StyleSheet.create({
+    // map: {
+    //     height: 300,
+    //     alignSelf: "stretch",
+    // },
     map: {
-        height: 300,
+        flex: 1,
+        // height: 300,
+        marginBottom: 16,
         alignSelf: "stretch",
     },
 });
